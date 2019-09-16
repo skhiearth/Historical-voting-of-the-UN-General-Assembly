@@ -11,17 +11,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Analysing historical voting of the United Nations General Assembly
 
-The dataset contains the historical voting data from the General Assembly of the United Nations.
+The [dataset](https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/LEJUQZ/KKG7SW) contains the historical voting data from the General Assembly of the United Nations. This is a dataset of roll-call votes in the UN General Assembly 1946-2018. In the General Assembly, every member nation gets a vote, which makes the voting history a great resource to study international relations.
 
-```{r cars}
-summary(cars)
+The raw data was sourced from the Harvard Dataverse. 
+
+*Citation: Voeten, Erik; Strezhnev, Anton; Bailey, Michael, 2009, "UN-73new.RData", United Nations General Assembly Voting Data, https://doi.org/10.7910/DVN/LEJUQZ/KKG7SW, Harvard Dataverse, V21*
+
+```{r message = false}
+#Importing and installing required libraries
+library(dplyr)
+library(ggplot2)
+
+# Loading dataset
+load("~/Desktop/Analysing historical voting of the United Nations General Assembly/Dataset/UN-73new.RData")
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
