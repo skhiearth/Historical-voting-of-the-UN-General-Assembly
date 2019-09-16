@@ -1,0 +1,27 @@
+---
+title: "Analysing historical voting of the United Nations General Assembly"
+author: "Utkarsh Sharma"
+date: "16/09/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analysing historical voting of the United Nations General Assembly
+
+The dataset contains the historical voting data from the General Assembly of the United Nations.
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
