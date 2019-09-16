@@ -374,7 +374,34 @@ summary {
 <p>The <a href="https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/LEJUQZ/KKG7SW">dataset</a> contains the historical voting data from the General Assembly of the United Nations. This is a dataset of roll-call votes in the UN General Assembly 1946-2018. In the General Assembly, every member nation gets a vote, which makes the voting history a great resource to study international relations.</p>
 <p>The raw data was sourced from the Harvard Dataverse.</p>
 <p><em>Citation: Voeten, Erik; Strezhnev, Anton; Bailey, Michael, 2009, “UN-73new.RData”, United Nations General Assembly Voting Data, <a href="https://doi.org/10.7910/DVN/LEJUQZ/KKG7SW" class="uri">https://doi.org/10.7910/DVN/LEJUQZ/KKG7SW</a>, Harvard Dataverse, V21</em></p>
-<pre class="r"><code>library(dplyr)</code></pre>
+<pre class="r"><code>#Importing and installing required libraries
+library(dplyr)
+library(ggplot2)
+
+# Loading dataset
+load(&quot;~/Desktop/Analysing historical voting of the United Nations General Assembly/Dataset/UN-73new.RData&quot;)</code></pre>
+<p>Checking out the first six rows of the dataset.</p>
+<pre class="r"><code>  head(completeVotes)</code></pre>
+<pre><code>## Warning: Detecting old grouped_df format, replacing `vars` attribute by
+## `groups`</code></pre>
+<pre><code>## # A tibble: 6 x 34
+## # Groups:   rcid, ccode, Countryname [6]
+##    rcid ccode member  vote Country Countryname year  session abstain   yes
+##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1     3     2      1     1 USA     United Sta… 1946        1       4    29
+## 2     3    20      1     3 CAN     Canada      1946        1       4    29
+## 3     3    31     NA     9 BHS     Bahamas     1946        1       4    29
+## 4     3    40      1     1 CUB     Cuba        1946        1       4    29
+## 5     3    41      1     1 HTI     Haiti       1946        1       4    29
+## 6     3    42      1     1 DOM     Dominican … 1946        1       4    29
+## # … with 24 more variables: no &lt;dbl&gt;, importantvote &lt;int&gt;, date &lt;date&gt;,
+## #   unres &lt;chr&gt;, amend &lt;int&gt;, para &lt;int&gt;, short &lt;chr&gt;, descr &lt;chr&gt;,
+## #   me &lt;dbl&gt;, nu &lt;dbl&gt;, di &lt;dbl&gt;, hr &lt;dbl&gt;, co &lt;dbl&gt;, ec &lt;dbl&gt;,
+## #   Meeting &lt;chr&gt;, Results &lt;chr&gt;, Details &lt;fct&gt;, Notes &lt;fct&gt;,
+## #   Votes.Counted &lt;int&gt;, motion &lt;int&gt;, Extra &lt;dbl&gt;,
+## #   Related.Documents &lt;chr&gt;, ident &lt;dbl&gt;, resid &lt;chr&gt;</code></pre>
+<p>The vote column in the dataset has a number that represents that country’s vote:</p>
+<p>1 = Yes 2 = Abstain 3 = No 8 = Not present 9 = Not a member</p>
 </div>
 
 
