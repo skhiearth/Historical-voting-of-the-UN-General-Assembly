@@ -42,9 +42,7 @@ To study the international relationships between countries, we filter out the re
 
 ## Year-over-year consensus
 
-If a country tends to votes "Yes" on most occassions, it can be inferred that it tends to agree with the international consensus, while if it votes "No" on most occassions, it can be assumed that it tends to go against the consensus. 
-
-To find the year-by-year overall trend of voting against or for the consensus, we plot the year-by-year percentage of "Yes" votes.
+To find the year-by-year overall trend of voting against or for the international consensus, we plot the year-by-year percentage of "Yes" votes.
 
 ```{r warning = FALSE}
   year_by_yearYes <- filteredVotes %>% 
@@ -58,4 +56,21 @@ To find the year-by-year overall trend of voting against or for the consensus, w
 
 Here, it can be easily seen that the overall consensus has greatly improved since 1960.
 
+## Country consensus
+
+If a country tends to votes "Yes" on most occassions, it can be inferred that it tends to agree with the international consensus, while if it votes "No" on most occassions, it can be assumed that it tends to go against the consensus. 
+
+```{r}
+  byCountryYes <- filteredVotes %>% 
+                  group_by(Countryname) %>% 
+                  summarize(Votes = n(), PercentageofYes = mean(vote == 1) * 100)
+
+  head(byCountryYes %>% arrange(PercentageofYes))
+```
+
+It can be seen that the country Zanzibar only has 2 votes casted in the General Assembly. To get a clearer picture, we filter out country with low number of votes.
+
+```{r}
+  head(byCountryYes %>% filter(Votes > 200) %>% arrange(desc(PercentageofYes)))
+```
 
