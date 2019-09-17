@@ -81,7 +81,19 @@ To study trends of voting within specific countries rather than the overall tren
 ```{r warning = FALSE}
   summarizedVotes <- filteredVotes %>% group_by(year, Countryname) %>% summarize(Votes = n(), PercentageofYes = mean(vote == 1) * 100)
 
-Countries <- c("United States of America", "United Kingdom of Great Britain and Northern Ireland", "India","Germany", "France", "China")
+  Countries <- c("United States of America", "Norway", "India","Germany", "France", "China")
+
+  filteredCountry <- summarizedVotes %>% filter(Countryname %in% Countries)
+  
+  ggplot(filteredCountry, aes(year, PercentageofYes, group = 1)) + geom_line() + xlim(years) + facet_wrap(~Countryname, scales = "free_y") + theme(axis.text.x = element_text(face="bold", size=07, angle=45))
+```
+
+### Country consensus over topics
+
+```{r warning = FALSE}
+  summarizedVotes <- filteredVotes %>% group_by(year, Countryname) %>% summarize(Votes = n(), PercentageofYes = mean(vote == 1) * 100)
+
+  Countries <- c("United States of America", "Norway", "India","Germany", "France", "China")
 
   filteredCountry <- summarizedVotes %>% filter(Countryname %in% Countries)
   
